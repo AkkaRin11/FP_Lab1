@@ -17,7 +17,7 @@ pub fn main() {
 
 // ========= Task 1 =========
 
-fn multiples_rec(limit: Int) -> Int {
+pub fn multiples_rec(limit: Int) -> Int {
   case limit {
     0 -> 0
     _ -> {
@@ -30,7 +30,7 @@ fn multiples_rec(limit: Int) -> Int {
   }
 }
 
-fn multiples_tail_rec(limit: Int, acc: Int) -> Int {
+pub fn multiples_tail_rec(limit: Int, acc: Int) -> Int {
   case limit {
     0 -> acc
     _ -> {
@@ -43,7 +43,7 @@ fn multiples_tail_rec(limit: Int, acc: Int) -> Int {
   }
 }
 
-fn multiples_models(limit: Int) -> Int {
+pub fn multiples_models(limit: Int) -> Int {
   generate_numbers(limit)
   |> filter_multiples
   |> sum
@@ -61,7 +61,7 @@ pub fn generate_numbers(limit: Int) -> List(Int) {
   list.range(1, limit)
 }
 
-fn multiples_map(limit: Int) -> Int {
+pub fn multiples_map(limit: Int) -> Int {
   list.map(list.range(1, limit), fn(n) {
     case n % 3 == 0 || n % 5 == 0 {
       True -> n
@@ -73,7 +73,7 @@ fn multiples_map(limit: Int) -> Int {
 
 // ========= Task 2 =========
 
-fn digit_fifth_powers_rec(limit: Int) -> Int {
+pub fn digit_fifth_powers_rec(limit: Int) -> Int {
   case limit {
     1 -> 0
     _ -> {
@@ -103,7 +103,7 @@ fn sum_of_fifth_powers_pf_digits_rec(n: Int) -> Int {
   }
 }
 
-fn digit_fifth_powers_tail_rec(limit: Int, acc: Int) -> Int {
+pub fn digit_fifth_powers_tail_rec(limit: Int, acc: Int) -> Int {
   case limit {
     1 -> acc
     _ -> {
@@ -117,7 +117,7 @@ fn digit_fifth_powers_tail_rec(limit: Int, acc: Int) -> Int {
   }
 }
 
-fn sum_of_fifth_powers_pf_digits_tail_rec(n: Int, acc: Int) -> Int {
+pub fn sum_of_fifth_powers_pf_digits_tail_rec(n: Int, acc: Int) -> Int {
   case n {
     0 -> acc
     _ -> {
@@ -131,7 +131,7 @@ fn sum_of_fifth_powers_pf_digits_tail_rec(n: Int, acc: Int) -> Int {
   }
 }
 
-fn digit_fifth_powers_models(n: Int) -> Int {
+pub fn digit_fifth_powers_models(n: Int) -> Int {
   list.range(2, n)
   |> filter_numbers
   |> sum
@@ -159,7 +159,7 @@ fn filter_numbers(list: List(Int)) -> List(Int) {
   list.filter(list, fn(x) { x == sum_of_fifth_powers_of_digits_models(x) })
 }
 
-fn sum_of_fifth_powers_of_digits_map(limit: Int) -> Int {
+pub fn sum_of_fifth_powers_of_digits_map(limit: Int) -> Int {
   list.map(list.range(2, limit), fn(n) {
     case sum_of_fifth_powers_pf_digits_rec(n) == n {
       True -> n
